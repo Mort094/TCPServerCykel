@@ -60,19 +60,23 @@ namespace TCPServerCykel
                 String json = JsonConvert.SerializeObject(cykels);
 
 
-                if (str1 == "HentAlle")
+                if (string.IsNullOrEmpty(str2))
                 {
-                    if (str2 == null)
+                    if (str1 == "HentAlle")
                     {
+
                         sw.WriteLine(strRetur + json);
                     }
 
 
                 }
 
-                if (str1 == "Hent")
+                if (true)
                 {
+                    if (str1 == "Hent")
+                    {
 
+                    }
                 }
 
                 if (str1 == "Gem")
