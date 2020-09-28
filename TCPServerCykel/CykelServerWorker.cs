@@ -59,15 +59,12 @@ namespace TCPServerCykel
                 String test = "virker det?";
                 String json = JsonConvert.SerializeObject(cykels);
 
-
-                if (str1 == "HentAlle")
+                if (str2 == "")
                 {
-                    if (str2 == null)
+                    if (str1 == "HentAlle")
                     {
                         sw.WriteLine(strRetur + json);
                     }
-
-
                 }
 
                 if (str1 == "Hent")
