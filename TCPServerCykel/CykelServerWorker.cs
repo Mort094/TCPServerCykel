@@ -46,44 +46,41 @@ namespace TCPServerCykel
             //Cykel cykel = JsonConvert.DeserializeObject<Cykel>();
             //String cykelString = sr.ReadLine();
 
-            while (true)
+
+            sw.AutoFlush = true;
+
+            String str1 = sr.ReadLine();
+            String str2;// = sr.ReadLine();
+            //String[] vs = str1.Split(" ");
+
+            String strRetur = "Resultat = ";
+            //String command = vs[0];
+            String test = "virker det?";
+            String json = JsonConvert.SerializeObject(cykels);
+
+
+            if (str1 == "HentAlle")
             {
-                sw.AutoFlush = true;
 
-                String str1 = sr.ReadLine();
-                String str2 = sr.ReadLine();
-                //String[] vs = str1.Split(" ");
-
-                String strRetur = "Resultat = ";
-                //String command = vs[0];
-                String test = "virker det?";
-                String json = JsonConvert.SerializeObject(cykels);
-
-
-                if (string.IsNullOrEmpty(str2))
-                {
-                    if (str1 == "HentAlle")
-                    {
-
-                        sw.WriteLine(strRetur + json);
-                    }
-
-
-                }
-
-                if (true)
-                {
-                    if (str1 == "Hent")
-                    {
-
-                    }
-                }
-
-                if (str1 == "Gem")
-                {
-
-                }
+                sw.WriteLine(strRetur + json);
             }
+            else if (str1 == "Hent")
+            {
+                str2 = sr.ReadLine();
+                var Id = Convert.ToInt32(str2);
+                sw.WriteLine(strRetur + JsonConvert.SerializeObject(cykels.Find(c => c.Id == Id)));
+
+            }
+            else if (str1 == "Gem")
+            {
+
+                sw.WriteLine("{\"Id\":1,\"Farve\":\"rÃ¸d\",\"Pris\":200,\"Gear\":16}");
+                str2 = sr.ReadLine();
+                Cykel nycykel = JsonConvert.DeserializeObject<Cykel>(str2);
+                cykels.Add(nycykel);
+
+            }
+
         }
     }
 }
